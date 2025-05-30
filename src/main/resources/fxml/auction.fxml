@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.AuctionController"
+      prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- Верхня панель з інформацією про аукціон -->
+    <HBox spacing="20">
+        <!-- Фотографія транспортного засобу -->
+        <StackPane minWidth="300" minHeight="200" styleClass="photo-container">
+            <ImageView fx:id="vehiclePhotoView" fitWidth="300" fitHeight="200" preserveRatio="true" />
+            <Label fx:id="noPhotoLabel" text="Фото відсутнє" visible="false" styleClass="no-photo-label"/>
+        </StackPane>
+        
+        <!-- Інформація про аукціон -->
+        <GridPane vgap="10" hgap="10" HBox.hgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints minWidth="150" prefWidth="150"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+        
+        <Label text="Транспортний засіб:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="vehicleLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Початкова ціна:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="startPriceLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Поточна ціна:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="currentPriceLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Крок ставки:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="priceStepLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Час початку:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label fx:id="startTimeLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        
+        <Label text="Час завершення:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label fx:id="endTimeLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        
+        <Label text="Статус:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <Label fx:id="statusLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    </GridPane>
+    </HBox>
+    
+    <!-- Панель для відображення балансу -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Ваш баланс:" styleClass="balance-label"/>
+        <Label fx:id="userBalanceLabel" styleClass="balance-value"/>
+    </HBox>
+    
+    <!-- Панель для створення ставки -->
+    <VBox spacing="10" styleClass="bid-panel">
+        <Label text="Зробити ставку" styleClass="section-label"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="bidAmountField" promptText="Сума ставки"/>
+            <Button fx:id="placeBidButton" text="Зробити ставку" onAction="#handlePlaceBid"/>
+            <Button fx:id="placeStepBidButton" text="Ставка з кроком" onAction="#handlePlaceStepBid"/>
+        </HBox>
+        <Label fx:id="messageLabel" styleClass="message-label"/>
+    </VBox>
+    
+    <!-- Таблиця ставок -->
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="Історія ставок" styleClass="section-label"/>
+        <TableView fx:id="bidsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="bidderColumn" text="Учасник"/>
+                <TableColumn fx:id="amountColumn" text="Сума"/>
+                <TableColumn fx:id="timeColumn" text="Час"/>
+            </columns>
+        </TableView>
+    </VBox>
+    
+    <!-- Нижня панель з кнопками -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Оновити" onAction="#handleRefresh"/>
+        <Button text="Назад" onAction="#handleBack" styleClass="button-secondary"/>
+    </HBox>
+    
+</VBox> 

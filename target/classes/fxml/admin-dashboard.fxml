@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.AdminDashboardController"
+          prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            
+            <Label text="Панель адміністратора" styleClass="title-label"/>
+            
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Button text="Назад" onAction="#handleBack" styleClass="button-secondary"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="adminNameLabel" styleClass="info-label"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="0" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Button text="Оновити всі дані" onAction="#handleRefreshAllData" styleClass="button-primary"/>
+                <Button text="Показати логи" onAction="#handleShowLogs" styleClass="button-primary"/>
+                <Button text="Управління користувачами" onAction="#handleShowUsers" styleClass="button-primary"/>
+                <Button text="Управління аукціонами" onAction="#handleShowAuctions" styleClass="button-primary"/>
+            </HBox>
+            
+            <StackPane VBox.vgrow="ALWAYS">
+                <!-- Вкладка логів -->
+                <VBox fx:id="logsPane" spacing="10" visible="true" managed="true">
+                    <padding>
+                        <Insets top="10" right="0" bottom="0" left="0"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Фільтрувати за:"/>
+                        <ComboBox fx:id="userFilterComboBox" promptText="Користувач"/>
+                        <DatePicker fx:id="dateFromPicker" promptText="З дати"/>
+                        <DatePicker fx:id="dateToPicker" promptText="По дату"/>
+                        <TextField fx:id="actionFilterField" promptText="Текст дії"/>
+                        <Button text="Застосувати фільтр" onAction="#handleApplyFilter"/>
+                        <Button text="Скинути фільтр" onAction="#handleResetFilter"/>
+                    </HBox>
+                    
+                    <TableView fx:id="logsTable" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="500">
+                        <columns>
+                            <TableColumn fx:id="logIdColumn" text="ID"/>
+                            <TableColumn fx:id="logUserColumn" text="Користувач"/>
+                            <TableColumn fx:id="logActionColumn" text="Дія" prefWidth="350"/>
+                            <TableColumn fx:id="logDateColumn" text="Дата та час"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+                <!-- Вкладка управління користувачами -->
+                <VBox fx:id="usersPane" spacing="10" visible="false" managed="false">
+                    <padding>
+                        <Insets top="10" right="0" bottom="0" left="0"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Список користувачів системи" styleClass="section-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="userSearchField" promptText="Пошук користувача"/>
+                        <Button text="Пошук" onAction="#handleUserSearch"/>
+                        <Button text="Скинути фільтр" onAction="#handleResetUserSearch"/>
+                    </HBox>
+                    
+                    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="500">
+                        <columns>
+                            <TableColumn fx:id="userIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="usernameColumn" text="Логін" prefWidth="150"/>
+                            <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
+                            <TableColumn fx:id="roleColumn" text="Роль" prefWidth="100"/>
+                            <TableColumn fx:id="balanceColumn" text="Баланс" prefWidth="100"/>
+                            <TableColumn fx:id="actionsColumn" text="Дії" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+                <!-- Вкладка управління аукціонами -->
+                <VBox fx:id="auctionsPane" spacing="10" visible="false" managed="false">
+                    <padding>
+                        <Insets top="10" right="0" bottom="0" left="0"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Список аукціонів системи" styleClass="section-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="auctionSearchField" promptText="Пошук аукціону"/>
+                        <Button text="Пошук" onAction="#handleAuctionSearch"/>
+                        <Button text="Скинути фільтр" onAction="#handleResetAuctionSearch"/>
+                    </HBox>
+                    
+                    <TableView fx:id="auctionsTable" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="500">
+                        <columns>
+                            <TableColumn fx:id="auctionIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="auctionVehicleColumn" text="Транспорт" prefWidth="200"/>
+                            <TableColumn fx:id="auctionSellerColumn" text="Продавець" prefWidth="150"/>
+                            <TableColumn fx:id="auctionStartPriceColumn" text="Початкова ціна" prefWidth="120"/>
+                            <TableColumn fx:id="auctionCurrentPriceColumn" text="Поточна ціна" prefWidth="120"/>
+                            <TableColumn fx:id="auctionStatusColumn" text="Статус" prefWidth="100"/>
+                            <TableColumn fx:id="auctionActionsColumn" text="Дії" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </StackPane>
+        </VBox>
+    </center>
+</BorderPane>

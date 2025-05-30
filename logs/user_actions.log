@@ -1,0 +1,34 @@
+[2025-05-30 13:55:51] User ID: 1 - Вхід в систему
+[2025-05-30 13:56:00] User ID: 1 - Зміна балансу на 10000.0
+[2025-05-30 13:57:12] User ID: 2 - Вхід в систему
+[2025-05-30 13:57:20] User ID: 2 - Зроблено ставку 1100.0 на аукціоні: Ford Transit
+[2025-05-30 13:58:06] User ID: 2 - Переказ коштів користувачу Mykola у розмірі 1100.0
+[2025-05-30 13:58:07] User ID: 1 - Отримано кошти від користувача Ruslan у розмірі 1100.0
+[2025-05-30 13:58:08] User ID: 2 - Auction completed. Vehicle transferred to new owner.
+[2025-05-30 14:06:26] SYSTEM - КРИТИЧНА ПОМИЛКА: Помилка підключення до БД: ��������: ���������� "postgres" �� ������� �������������� �� ��������� ������
+[2025-05-30 14:08:02] SYSTEM - КРИТИЧНА ПОМИЛКА: Помилка підключення до БД: Connection to localhost:5433 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+[2025-05-30 14:08:42] SYSTEM - КРИТИЧНА ПОМИЛКА: Помилка підключення до БД: Connection to localhost:5433 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+[2025-05-30 14:10:23] User ID: 1 - Вхід в систему
+[2025-05-30 14:10:59] SYSTEM - КРИТИЧНА ПОМИЛКА: Помилка підключення до БД: ��������: ���������� "postgres" �� ������� �������������� �� ��������� ������
+[2025-05-30 14:10:59] SYSTEM - КРИТИЧНА ПОМИЛКА: Критична помилка підключення до бази даних. Кількість спроб: 1
+[2025-05-30 14:11:05] SYSTEM - Помилка при відправленні email: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ada5d82e88csm311007666b.62 - gsmtp
+
+[2025-05-30 14:11:05] SYSTEM - КРИТИЧНА ПОМИЛКА: Помилка підключення до БД: ��������: ���������� "postgres" �� ������� �������������� �� ��������� ������
+[2025-05-30 14:11:05] SYSTEM - КРИТИЧНА ПОМИЛКА: Критична помилка підключення до бази даних. Кількість спроб: 2
+[2025-05-30 14:11:10] SYSTEM - Помилка при відправленні email: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 4fb4d7f45d1cf-60566c5b6e9sm1484330a12.23 - gsmtp
+
+[2025-05-30 14:11:10] SYSTEM - КРИТИЧНА ПОМИЛКА: Помилка підключення до БД: ��������: ���������� "postgres" �� ������� �������������� �� ��������� ������
+[2025-05-30 14:11:10] SYSTEM - КРИТИЧНА ПОМИЛКА: Критична помилка підключення до бази даних. Кількість спроб: 3
+[2025-05-30 14:11:15] SYSTEM - Помилка при відправленні email: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ada5d7fec76sm309671766b.20 - gsmtp
+
+[2025-05-30 14:11:46] User ID: 1 - Вхід в систему
+[2025-05-30 14:56:40] User ID: 1 - Вхід в систему
+[2025-05-30 14:56:41] User ID: 1 - Auction ended without bids.
+[2025-05-30 16:41:37] User ID: 1 - Вхід в систему
+[2025-05-30 16:42:33] User ID: 4 - Вхід в систему
+[2025-05-30 17:22:47] User ID: 3 - Вхід в систему
+[2025-05-30 17:23:52] User ID: 1 - Вхід в систему
+[2025-05-30 17:25:00] User ID: 3 - Auction ended without bids.

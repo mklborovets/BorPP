@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.EditVehicleController"
+      prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Редагування транспортного засобу" styleClass="title-label"/>
+    
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <VBox spacing="20">
+            <!-- Основна інформація -->
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <Label text="Марка:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="brandField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Модель:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="modelField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Рік випуску:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="yearField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="Тип:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <ComboBox fx:id="typeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Стан:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <ComboBox fx:id="conditionComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+            
+            <!-- Опис -->
+            <TitledPane text="Опис" expanded="true">
+                <TextArea fx:id="descriptionArea" wrapText="true" prefRowCount="4"/>
+            </TitledPane>
+            
+            <!-- Технічні характеристики -->
+            <TitledPane text="Технічні характеристики" expanded="true">
+                <GridPane vgap="10" hgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="150" prefWidth="150"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    
+                    <Label text="VIN:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="vinField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    
+                    <Label text="Пробіг (км):" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="mileageField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    
+                    <Label text="Двигун:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="engineField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    
+                    <Label text="Об'єм двигуна (л):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="engineVolumeField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    
+                    <Label text="Потужність (к.с.):" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="powerField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    
+                    <Label text="Коробка передач:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="transmissionComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                </GridPane>
+            </TitledPane>
+            
+            <!-- Документи -->
+            <TitledPane text="Документи" expanded="true">
+                <TextArea fx:id="documentsArea" wrapText="true" prefRowCount="4"/>
+            </TitledPane>
+            
+            <!-- Фотографії -->
+            <TitledPane text="Фотографії" expanded="true">
+                <VBox spacing="10">
+                    <HBox spacing="10">
+                        <Label text="URL фотографії:" minWidth="150"/>
+                        <TextField fx:id="photoUrlField" HBox.hgrow="ALWAYS"/>
+                        <Button text="Вибрати файл" onAction="#handleChoosePhoto"/>
+                    </HBox>
+                    
+                    <StackPane minHeight="200">
+                        <ImageView fx:id="photoPreview" fitWidth="300" preserveRatio="true"/>
+                        <Label fx:id="noPhotoLabel" text="Фото не вибрано" visible="true"/>
+                    </StackPane>
+                </VBox>
+            </TitledPane>
+        </VBox>
+    </ScrollPane>
+    
+    <!-- Кнопки -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Скасувати" onAction="#handleCancel" styleClass="button-secondary"/>
+        <Button text="Зберегти" onAction="#handleSave" styleClass="button-primary"/>
+    </HBox>
+    
+</VBox> 

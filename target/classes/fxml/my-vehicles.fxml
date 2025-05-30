@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.MyVehiclesController"
+      prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- Верхня панель з кнопками -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Назад" onAction="#handleBack"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Додати транспортний засіб" onAction="#handleAddVehicle"/>
+    </HBox>
+    
+    <!-- Таблиця транспортних засобів -->
+    <TableView fx:id="vehiclesTable" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+        <columns>
+            <TableColumn fx:id="brandColumn" text="Марка" prefWidth="150"/>
+            <TableColumn fx:id="modelColumn" text="Модель" prefWidth="150"/>
+            <TableColumn fx:id="yearColumn" text="Рік" prefWidth="90"/>
+            <TableColumn fx:id="typeColumn" text="Тип" prefWidth="200"/>
+            <TableColumn fx:id="engineColumn" text="Двигун" prefWidth="120"/>
+            <TableColumn fx:id="mileageColumn" text="Пробіг" prefWidth="100"/>
+            <TableColumn fx:id="registrationDateColumn" text="Дата реєстрації" prefWidth="150"/>
+            <TableColumn fx:id="actionsColumn" text="Дії" prefWidth="300"/>
+        </columns>
+    </TableView>
+    
+    <!-- Нижня панель з інформацією -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Всього транспортних засобів:"/>
+        <Label fx:id="totalVehiclesLabel" styleClass="info-label"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="userLabel" styleClass="info-label"/>
+    </HBox>
+    
+</VBox> 

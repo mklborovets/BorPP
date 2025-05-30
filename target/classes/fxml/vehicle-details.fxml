@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.VehicleDetailsController"
+      prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Деталі транспортного засобу" styleClass="title-label"/>
+    
+    <!-- Основна інформація -->
+    <GridPane vgap="10" hgap="10">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" prefWidth="150"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        
+        <Label text="Марка:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="brandLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Модель:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="modelLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Рік випуску:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="yearLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Тип:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="typeLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Стан:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label fx:id="conditionLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+    
+    <!-- Технічні характеристики -->
+    <TitledPane text="Технічні характеристики" expanded="true">
+        <VBox spacing="10">
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <Label text="Двигун:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="engineLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Об'єм двигуна:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="engineVolumeLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Потужність:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="powerLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="Пробіг:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="mileageLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Коробка передач:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="transmissionLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+        </VBox>
+    </TitledPane>
+    
+    <!-- Опис -->
+    <TitledPane text="Опис" expanded="true">
+        <TextArea fx:id="descriptionArea" wrapText="true" editable="false"/>
+    </TitledPane>
+    
+    <!-- Додаткова інформація -->
+    <TitledPane text="Додаткова інформація" expanded="true">
+        <VBox spacing="10">
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <Label text="Власник:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="ownerLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Дата реєстрації:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="registrationDateLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Документи:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="documentsLabel" styleClass="info-label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+        </VBox>
+    </TitledPane>
+    
+    <!-- Кнопки -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Назад" onAction="#handleBack" styleClass="button-secondary"/>
+        <Button text="Створити аукціон" onAction="#handleCreateAuction" fx:id="createAuctionButton"/>
+    </HBox>
+    
+</VBox> 

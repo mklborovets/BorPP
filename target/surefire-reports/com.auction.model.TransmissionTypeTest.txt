@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.auction.model.TransmissionTypeTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s -- in com.auction.model.TransmissionTypeTest

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.CreateAuctionController"
+      prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Створення нового аукціону" styleClass="title-label"/>
+    
+     <GridPane vgap="10" hgap="10" alignment="CENTER">
+        <Label text="Транспортний засіб:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="vehicleComboBox" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Початкова ціна:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="startPriceField" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Крок ставки:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="priceStepField" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Дата початку:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="startDatePicker" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Час початку:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <ComboBox fx:id="startTimeComboBox" editable="true" promptText="ГГ:ХХ" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        
+        <Label text="Дата завершення:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <DatePicker fx:id="endDatePicker" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        
+        <Label text="Час завершення:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <ComboBox fx:id="endTimeComboBox" editable="true" promptText="ГГ:ХХ" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    </GridPane>
+    
+    <Label fx:id="messageLabel" styleClass="message-label"/>
+    
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Створити аукціон" onAction="#handleCreate"/>
+        <Button text="Назад" onAction="#handleBack" styleClass="button-secondary"/>
+    </HBox>
+    
+</VBox> 

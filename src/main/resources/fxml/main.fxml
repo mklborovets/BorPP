@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.auction.controller.MainController"
+      prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- Верхня панель з привітанням -->
+    <Label fx:id="welcomeLabel" styleClass="title-label"/>
+
+    <!-- Верхня панель з кнопками та фільтрами -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Мої транспортні засоби" onAction="#handleMyVehicles"/>
+        <Button text="Створити аукціон" onAction="#handleCreateAuction"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Пошук за маркою/моделлю"/>
+        <ComboBox fx:id="filterBox" promptText="Фільтр"/>
+        <Button text="Оновити" onAction="#handleRefresh"/>
+    </HBox>
+    
+    <!-- Панель з додатковими фільтрами -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Бренд:"/>
+        <ComboBox fx:id="brandFilterBox" promptText="Всі бренди"/>
+        
+        <Label text="Поточна ціна:" styleClass="filter-label"/>
+        <TextField fx:id="minPriceField" promptText="Від" prefWidth="80"/>
+        <Label text="-"/>
+        <TextField fx:id="maxPriceField" promptText="До" prefWidth="80"/>
+        
+        <Label text="Пробіг:" styleClass="filter-label"/>
+        <TextField fx:id="minMileageField" promptText="Від" prefWidth="80"/>
+        <Label text="-"/>
+        <TextField fx:id="maxMileageField" promptText="До" prefWidth="80"/>
+    </HBox>
+    
+    <!-- Таблиця аукціонів -->
+    <TableView fx:id="auctionsTable" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+        <columns>
+            <TableColumn fx:id="vehicleColumn" text="Транспортний засіб" prefWidth="350"/>
+            <TableColumn fx:id="startPriceColumn" text="Початкова ціна" prefWidth="165"/>
+            <TableColumn fx:id="currentPriceColumn" text="Поточна ціна" prefWidth="165"/>
+            <TableColumn fx:id="priceStepColumn" text="Крок ставки" prefWidth="100"/>
+            <TableColumn fx:id="startTimeColumn" text="Початок"/>
+            <TableColumn fx:id="endTimeColumn" text="Завершення"/>
+            <TableColumn fx:id="statusColumn" text="Статус"/>
+            <TableColumn fx:id="bidsCountColumn" text="Ставок"/>
+            <TableColumn fx:id="actionsColumn" text="Дії" prefWidth="110"/>
+        </columns>
+    </TableView>
+    
+    <!-- Нижня панель з інформацією -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="totalAuctionsLabel" styleClass="info-label"/>
+        <Label fx:id="activeAuctionsLabel" styleClass="info-label"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="userLabel" styleClass="info-label"/>
+        <Button fx:id="adminDashboardButton" text="Панель адміністратора" onAction="#handleAdminDashboard" styleClass="button-admin"/>
+        <Button text="Профіль" onAction="#handleProfile"/>
+        <Button text="Вийти" onAction="#handleLogout"/>
+    </HBox>
+    
+</VBox> 
