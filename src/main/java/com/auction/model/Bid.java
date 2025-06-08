@@ -14,9 +14,9 @@ public class Bid {
     public Bid() {
     }
 
-    public Bid(Long auctionId, Long userId, double amount) {
-        this.auctionId = auctionId;
+    public Bid(Long userId, Long auctionId, double amount) {
         this.userId = userId;
+        this.auctionId = auctionId;
         this.amount = amount;
         this.createdAt = LocalDateTime.now();
     }

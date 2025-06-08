@@ -85,7 +85,7 @@
                             <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
                             <TableColumn fx:id="roleColumn" text="Роль" prefWidth="100"/>
                             <TableColumn fx:id="balanceColumn" text="Баланс" prefWidth="100"/>
-                            <TableColumn fx:id="actionsColumn" text="Дії" prefWidth="150"/>
+                            <TableColumn fx:id="actionsColumn" text="Дії" prefWidth="300"/>
                         </columns>
                     </TableView>
                 </VBox>

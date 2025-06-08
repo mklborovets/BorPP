@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Фон -->
+  <circle cx="256" cy="256" r="250" fill="#3498db" />
+  
+  <!-- Молоток аукціону -->
+  <g transform="translate(80, 80) scale(0.7)">
+    <!-- Ручка молотка -->
+    <rect x="150" y="150" width="250" height="50" rx="10" fill="#2c3e50" transform="rotate(45, 275, 175)" />
+    
+    <!-- Головка молотка -->
+    <rect x="80" y="80" width="120" height="80" rx="10" fill="#2c3e50" transform="rotate(45, 140, 120)" />
+  </g>
+  
+  <!-- Підставка -->
+  <rect x="180" y="350" width="150" height="20" rx="5" fill="#2c3e50" />
+  
+  <!-- Текст "AUCTION" -->
+  <text x="256" y="400" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="#ffffff">AUCTION</text>
+</svg> 

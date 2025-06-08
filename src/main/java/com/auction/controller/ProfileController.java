@@ -124,7 +124,7 @@ public class ProfileController implements Initializable {
         usernameLabel.setText(currentUser.getUsername());
         emailLabel.setText(currentUser.getEmail());
         roleLabel.setText(currentUser.getRole());
-        balanceLabel.setText(String.format("%.2f грн", currentUser.getBalance()));
+        balanceLabel.setText(String.format("%.2f $", currentUser.getBalance()));
     }
     
         private void setupLogColumns() {

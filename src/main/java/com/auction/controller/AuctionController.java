@@ -86,13 +86,13 @@ public class AuctionController implements Initializable {
         try {
             Vehicle vehicle = vehicleService.findById(auction.getVehicleId());
             vehicleLabel.setText(vehicle.getBrand() + " " + vehicle.getModel());
-            startPriceLabel.setText(String.format("%.2f грн", auction.getStartPrice()));
-            priceStepLabel.setText(String.format("%.2f грн", auction.getPriceStep()));
-            currentPriceLabel.setText(String.format("%.2f грн", auctionService.getCurrentPrice(auction.getId())));
+            startPriceLabel.setText(String.format("%.2f $", auction.getStartPrice()));
+            priceStepLabel.setText(String.format("%.2f $", auction.getPriceStep()));
+            currentPriceLabel.setText(String.format("%.2f $", auctionService.getCurrentPrice(auction.getId())));
             
             // Відображення балансу користувача
             double userBalance = userService.getBalance(Navigator.getCurrentUser().getId());
-            userBalanceLabel.setText(String.format("%.2f грн", userBalance));
+            userBalanceLabel.setText(String.format("%.2f $", userBalance));
             
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
             startTimeLabel.setText(auction.getStartTime().format(formatter));
@@ -132,7 +132,7 @@ public class AuctionController implements Initializable {
     
     private void updateCurrentPrice() {
         double currentPrice = auctionService.getCurrentPrice(auction.getId());
-        currentPriceLabel.setText(String.format("%.2f грн", currentPrice));
+        currentPriceLabel.setText(String.format("%.2f $", currentPrice));
     }
     
     @FXML
@@ -147,7 +147,7 @@ public class AuctionController implements Initializable {
             // Оновлюємо дані користувача та баланс
             Navigator.refreshCurrentUser();
             double userBalance = userService.getBalance(Navigator.getCurrentUser().getId());
-            userBalanceLabel.setText(String.format("%.2f грн", userBalance));
+            userBalanceLabel.setText(String.format("%.2f $", userBalance));
         } catch (NumberFormatException e) {
             showError("Будь ласка, введіть коректну суму");
         } catch (ServiceException e) {
@@ -171,7 +171,7 @@ public class AuctionController implements Initializable {
             // Оновлюємо дані користувача та баланс
             Navigator.refreshCurrentUser();
             double userBalance = userService.getBalance(Navigator.getCurrentUser().getId());
-            userBalanceLabel.setText(String.format("%.2f грн", userBalance));
+            userBalanceLabel.setText(String.format("%.2f $", userBalance));
         } catch (ServiceException e) {
             showError(e.getMessage());
         }
@@ -185,7 +185,7 @@ public class AuctionController implements Initializable {
         // Оновлюємо баланс користувача
         Navigator.refreshCurrentUser();
         double userBalance = userService.getBalance(Navigator.getCurrentUser().getId());
-        userBalanceLabel.setText(String.format("%.2f грн", userBalance));
+        userBalanceLabel.setText(String.format("%.2f $", userBalance));
     }
     
     private void startUpdateTimer() {
@@ -218,10 +218,10 @@ public class AuctionController implements Initializable {
         statusLabel.setStyle("-fx-text-fill: red;");
     }
     
-    /**
-     * Перевіряє статус аукціону і оновлює UI відповідно
-     * Якщо аукціон завершено, показує інформацію про переможця
-     */
+    
+     //Перевіряє статус аукціону і оновлює UI відповідно
+     //Якщо аукціон завершено, показує інформацію про переможця
+     
     private void checkAuctionStatus() {
         if ("FINISHED".equals(auction.getStatus())) {
             // Аукціон завершено, показуємо інформацію про переможця
@@ -241,11 +241,11 @@ public class AuctionController implements Initializable {
                     
                     if (isCurrentUserWinner) {
                         statusLabel.setText("Вітаємо! Ви виграли аукціон з сумою " + 
-                                           String.format("%.2f грн", winningAmount));
+                                           String.format("%.2f $", winningAmount));
                         statusLabel.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
                     } else {
                         statusLabel.setText("Аукціон завершено. Переможець: " + winnerUsername + 
-                                           " (" + String.format("%.2f грн", winningAmount) + ")");
+                                           " (" + String.format("%.2f $", winningAmount) + ")");
                         statusLabel.setStyle("-fx-text-fill: blue;");
                     }
                 }
@@ -264,10 +264,10 @@ public class AuctionController implements Initializable {
         }
     }
     
-    /**
-     * Завантажує та відображає фотографію транспортного засобу
-     * @param vehicle Транспортний засіб
-     */
+    
+     //Завантажує та відображає фотографію транспортного засобу
+     //@param vehicle Транспортний засіб
+     
     private void loadVehiclePhoto(Vehicle vehicle) {
         try {
             String photoUrl = vehicle.getPhotoUrl();

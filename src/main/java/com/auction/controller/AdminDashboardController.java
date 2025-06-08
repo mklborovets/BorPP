@@ -37,6 +37,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -285,6 +286,9 @@ public class AdminDashboardController implements Initializable {
         
         actionsColumn.setCellFactory(param -> new TableCell<User, Void>() {
             private final Button deleteButton = new Button("Видалити");
+            private final Button adminButton = new Button("Зробити адміном");
+            private final Button removeAdminButton = new Button("Забрати права адміна");
+            private final HBox buttonsBox = new HBox(5); // 5 - це відстань між кнопками
             
             {
                 deleteButton.setOnAction(event -> {
@@ -292,7 +296,19 @@ public class AdminDashboardController implements Initializable {
                     AdminDashboardController.this.handleDeleteUser(user);
                 });
                 
+                adminButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    AdminDashboardController.this.handleMakeAdmin(user);
+                });
+                
+                removeAdminButton.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    AdminDashboardController.this.handleRemoveAdmin(user);
+                });
+                
                 deleteButton.getStyleClass().add("button-danger");
+                adminButton.getStyleClass().add("button-admin");
+                removeAdminButton.getStyleClass().add("button-secondary");
             }
             
             @Override
@@ -303,11 +319,22 @@ public class AdminDashboardController implements Initializable {
                     setGraphic(null);
                 } else {
                     User user = getTableView().getItems().get(getIndex());
+                    buttonsBox.getChildren().clear();
+                    
                     // Не дозволяємо видаляти поточного адміністратора
-                    if (user.getId().equals(currentAdmin.getId())) {
-                        setGraphic(null);
+                    if (!user.getId().equals(currentAdmin.getId())) {
+                        buttonsBox.getChildren().add(deleteButton);
+                        
+                        // Показуємо кнопку "Зробити адміном" або "Забрати права адміна" залежно від ролі
+                        if ("admin".equalsIgnoreCase(user.getRole())) {
+                            buttonsBox.getChildren().add(removeAdminButton);
+                        } else {
+                            buttonsBox.getChildren().add(adminButton);
+                        }
+                        
+                        setGraphic(buttonsBox);
                     } else {
-                        setGraphic(deleteButton);
+                        setGraphic(null);
                     }
                 }
             }
@@ -694,5 +721,95 @@ public class AdminDashboardController implements Initializable {
         logger.info("Navigating back to main page...");
         Stage stage = (Stage) adminNameLabel.getScene().getWindow();
         Navigator.navigateToMain(stage);
+    }
+    
+    /**
+     * Обробник для надання користувачу прав адміністратора
+     */
+    private void handleMakeAdmin(User user) {
+        logger.info("Attempting to make user admin: " + user.getUsername());
+        
+        // Показуємо діалог підтвердження
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Підтвердження дії");
+        alert.setHeaderText("Надання прав адміністратора");
+        alert.setContentText("Ви впевнені, що хочете надати права адміністратора користувачу " + user.getUsername() + "?");
+        
+        if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+            try {
+                userService.changeRole(user.getId(), "admin");
+                
+                // Оновлюємо роль користувача в інтерфейсі
+                user.setRole("admin");
+                
+                // Оновлюємо таблицю
+                usersTable.refresh();
+                
+                // Логуємо дію
+                logService.createLog(currentAdmin.getId(), "Надано права адміністратора користувачу: " + user.getUsername());
+                
+                logger.info("User " + user.getUsername() + " is now an admin");
+                
+                // Показуємо повідомлення про успіх
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Успіх");
+                successAlert.setHeaderText("Права адміністратора надано");
+                successAlert.setContentText("Користувач " + user.getUsername() + " тепер має права адміністратора.");
+                successAlert.showAndWait();
+            } catch (Exception e) {
+                logger.severe("Error making user admin: " + e.getMessage());
+
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Помилка");
+                errorAlert.setHeaderText("Помилка надання прав адміністратора");
+                errorAlert.setContentText("Не вдалося надати права адміністратора: " + e.getMessage());
+                errorAlert.showAndWait();
+            }
+        }
+    }
+    
+    /**
+     * Обробник для видалення прав адміністратора у користувача
+     */
+    private void handleRemoveAdmin(User user) {
+        logger.info("Attempting to remove admin rights from user: " + user.getUsername());
+        
+        // Показуємо діалог підтвердження
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Підтвердження дії");
+        alert.setHeaderText("Видалення прав адміністратора");
+        alert.setContentText("Ви впевнені, що хочете видалити права адміністратора у користувача " + user.getUsername() + "?");
+        
+        if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+            try {
+                userService.changeRole(user.getId(), "user");
+                
+                // Оновлюємо роль користувача в інтерфейсі
+                user.setRole("user");
+                
+                // Оновлюємо таблицю
+                usersTable.refresh();
+                
+                // Логуємо дію
+                logService.createLog(currentAdmin.getId(), "Видалено права адміністратора у користувача: " + user.getUsername());
+                
+                logger.info("Admin rights removed from user " + user.getUsername());
+                
+                // Показуємо повідомлення про успіх
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Успіх");
+                successAlert.setHeaderText("Права адміністратора видалено");
+                successAlert.setContentText("Користувач " + user.getUsername() + " більше не має прав адміністратора.");
+                successAlert.showAndWait();
+            } catch (Exception e) {
+                logger.severe("Error removing admin rights: " + e.getMessage());
+
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Помилка");
+                errorAlert.setHeaderText("Помилка видалення прав адміністратора");
+                errorAlert.setContentText("Не вдалося видалити права адміністратора: " + e.getMessage());
+                errorAlert.showAndWait();
+            }
+        }
     }
 }

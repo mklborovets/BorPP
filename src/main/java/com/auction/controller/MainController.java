@@ -174,7 +174,7 @@ public class MainController implements Initializable {
                 if (empty || price == null) {
                     setText(null);
                 } else {
-                    setText(String.format("%.2f грн", price));
+                    setText(String.format("%.2f $", price));
                 }
             }
         });
@@ -189,7 +189,7 @@ public class MainController implements Initializable {
                 if (empty || price == null) {
                     setText(null);
                 } else {
-                    setText(String.format("%.2f грн", price));
+                    setText(String.format("%.2f $", price));
                 }
             }
         });
@@ -205,7 +205,7 @@ public class MainController implements Initializable {
                 if (empty || step == null) {
                     setText(null);
                 } else {
-                    setText(String.format("%.2f грн", step));
+                    setText(String.format("%.2f $", step));
                 }
             }
         });

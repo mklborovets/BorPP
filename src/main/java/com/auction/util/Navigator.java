@@ -47,6 +47,10 @@ public class Navigator {
             } else {
                 stage.getScene().setRoot(root);
             }
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
         } catch (IOException | IllegalStateException e) {
             throw new RuntimeException("Помилка навігації: " + e.getMessage(), e);
         }
@@ -58,6 +62,10 @@ public class Navigator {
                 Navigator.class.getResource("/fxml/main.fxml")
             );
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,6 +96,10 @@ public class Navigator {
             controller.setAuction(new AuctionService().findById(auctionId));
             
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -100,6 +112,10 @@ public class Navigator {
                 Navigator.class.getResource("/fxml/create-auction.fxml")
             );
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,6 +134,10 @@ public class Navigator {
             controller.setVehicle(vehicle);
             
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -130,6 +150,10 @@ public class Navigator {
                 Navigator.class.getResource("/fxml/my-vehicles.fxml")
             );
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -142,6 +166,10 @@ public class Navigator {
                 Navigator.class.getResource("/fxml/add-vehicle.fxml")
             );
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -159,6 +187,10 @@ public class Navigator {
             controller.setVehicle(vehicle);
             
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -171,6 +203,10 @@ public class Navigator {
                 Navigator.class.getResource("/fxml/admin-dashboard.fxml")
             );
             stage.setScene(new Scene(root));
+            
+            // Встановлюємо іконку для вікна
+            IconManager.setAppIcon(stage);
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

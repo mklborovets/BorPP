@@ -58,7 +58,7 @@ public class BidService {
         double minBid = currentPrice + auction.getPriceStep();
         if (amount < minBid) {
             throw new ServiceException(
-                String.format("Мінімальна сума ставки: %.2f грн", minBid)
+                String.format("Мінімальна сума ставки: %.2f $", minBid)
             );
         }
         
