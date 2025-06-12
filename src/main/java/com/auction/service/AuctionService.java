@@ -215,7 +215,7 @@ public class AuctionService {
         
         statusCheckCounter++;
         LocalDateTime now = LocalDateTime.now();
-        System.out.println("Cycle " + statusCheckCounter + ", Time: " + now);
+        
         
         String oldStatus = auction.getStatus();
         

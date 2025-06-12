@@ -219,17 +219,9 @@ public class VehicleService {
     }
     
     public void update(Vehicle vehicle) {
-        
-        System.out.println("========= VEHICLE UPDATE ===========");
-        System.out.println("Vehicle ID: " + vehicle.getId());
-        System.out.println("Brand/model: " + vehicle.getBrand() + " " + vehicle.getModel());
-        System.out.println("New owner (ID): " + vehicle.getUserId());
-        
-        
         try {
             Vehicle currentVehicle = findById(vehicle.getId());
             if (currentVehicle != null) {
-                System.out.println("Current owner (ID): " + currentVehicle.getUserId());
                 if (!currentVehicle.getUserId().equals(vehicle.getUserId())) {
                     System.out.println("OWNER CHANGE: from ID " + currentVehicle.getUserId() + " to ID " + vehicle.getUserId());
                 }
@@ -261,12 +253,8 @@ public class VehicleService {
             stmt.setString(13, vehicle.getTransmission());
             stmt.setString(14, vehicle.getDocuments());
             stmt.setLong(15, vehicle.getId());
-            
-            System.out.println("SQL query: " + sql);
-            System.out.println("Parameter user_id: " + vehicle.getUserId());
-            
+
             int rowsAffected = stmt.executeUpdate();
-            System.out.println("Updated rows: " + rowsAffected);
             
             if (rowsAffected == 0) {
                 throw new ServiceException("Транспортний засіб не знайдено");

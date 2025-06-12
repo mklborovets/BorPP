@@ -21,7 +21,7 @@ public class DatabaseConnection {
     static {
         try {
             Class.forName("org.postgresql.Driver");
-            logger.log(Level.INFO, "PostgreSQL JDBC Driver успішно завантажено");
+            
         } catch (ClassNotFoundException e) {
             String errorMessage = "PostgreSQL JDBC Driver не знайдено";
             logger.log(Level.SEVERE, errorMessage, e);
@@ -40,7 +40,7 @@ public class DatabaseConnection {
                 connectionHolder.set(conn);
                 // Скидаємо лічильник помилок при успішному підключенні
                 connectionErrorCount = 0;
-                logger.log(Level.INFO, "Успішне підключення до бази даних");
+                
             } catch (SQLException e) {
                 connectionErrorCount++;
                 String errorMessage = "Помилка підключення до БД: " + e.getMessage();
@@ -84,7 +84,7 @@ public class DatabaseConnection {
                 conn.rollback();
                 conn.setAutoCommit(true);
                 isInTransaction.set(false);
-                logger.log(Level.INFO, "Транзакцію успішно відкочено");
+                
             }
         } catch (SQLException e) {
             String errorMessage = "Помилка при відкаті транзакції: " + e.getMessage();
@@ -108,7 +108,7 @@ public class DatabaseConnection {
             Connection conn = connectionHolder.get();
             if (conn != null && !conn.isClosed()) {
                 conn.close();
-                logger.log(Level.INFO, "З'єднання з базою даних успішно закрито");
+                
             }
         } catch (SQLException e) {
             String errorMessage = "Помилка при закритті з'єднання з базою даних: " + e.getMessage();

@@ -70,7 +70,6 @@ public class ProfileController implements Initializable {
 
      //Завантажує статистику аукціонів користувача
     private void loadAuctionStatistics() {
-        System.out.println("Завантаження статистики аукціонів...");
         try {
             if (currentUser == null) {
                 System.out.println("Помилка: currentUser є null");
@@ -78,7 +77,6 @@ public class ProfileController implements Initializable {
             }
             
             Long userId = currentUser.getId();
-            System.out.println("Отримано userId: " + userId);
             
             // Перевіряємо, чи існують компоненти інтерфейсу
             if (participatedAuctionsLabel == null || wonAuctionsLabel == null || 
@@ -88,24 +86,14 @@ public class ProfileController implements Initializable {
             }
             
             // Отримуємо статистику
-            System.out.println("Отримуємо кількість аукціонів, в яких користувач брав участь...");
             int participated = auctionService.getParticipatedAuctionsCount(userId);
-            System.out.println("Кількість аукціонів, в яких користувач брав участь: " + participated);
-            
-            System.out.println("Отримуємо кількість виграних аукціонів...");
             int won = auctionService.getWonAuctionsCount(userId);
-            System.out.println("Кількість виграних аукціонів: " + won);
-            
-            System.out.println("Отримуємо відсоток виграних аукціонів...");
             double winPercentage = auctionService.getWinPercentage(userId);
-            System.out.println("Відсоток виграних аукціонів: " + winPercentage);
             
             // Відображаємо статистику
-            System.out.println("Встановлюємо текст для компонентів інтерфейсу...");
             participatedAuctionsLabel.setText(String.valueOf(participated));
             wonAuctionsLabel.setText(String.valueOf(won));
             winPercentageLabel.setText(String.format("%.1f%%", winPercentage));
-            System.out.println("Статистика аукціонів успішно завантажена");
         } catch (Exception e) {
             System.out.println("Помилка при завантаженні статистики аукціонів: " + e.getMessage());
             e.printStackTrace();

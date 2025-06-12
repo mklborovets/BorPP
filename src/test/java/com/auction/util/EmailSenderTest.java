@@ -311,7 +311,7 @@ class EmailSenderTest {
                 // Завантаження адреси для помилок
                 setStaticFieldValue("ERROR_RECIPIENT_EMAIL", props.getProperty("mail.error.recipient", "admin@yourdomain.com"));
                 
-                testLogger.log(Level.INFO, "Налаштування електронної пошти успішно завантажені");
+                
             } catch (IOException e) {
                 testLogger.log(Level.SEVERE, "Помилка при завантаженні налаштувань електронної пошти: {0}", e.getMessage());
             }

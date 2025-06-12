@@ -75,7 +75,7 @@ public class EmailSender {
             // Завантаження адреси для помилок
             ERROR_RECIPIENT_EMAIL = props.getProperty("mail.error.recipient", ERROR_RECIPIENT_EMAIL);
             
-            logger.log(Level.INFO, "Налаштування електронної пошти успішно завантажені");
+            
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Помилка при завантаженні налаштувань електронної пошти: {0}", e.getMessage());
         }
@@ -115,7 +115,7 @@ public class EmailSender {
             // Відправлення повідомлення
             Transport.send(message);
             
-            logger.log(Level.INFO, "Електронний лист успішно відправлено на адресу: {0}", recipient);
+            
             return true;
         } catch (MessagingException e) {
             logger.log(Level.SEVERE, "Помилка при відправленні електронного листа: {0}", e.getMessage());

@@ -95,7 +95,7 @@ public class VehicleDetailsController implements Initializable {
     @FXML
     private void handleBack() {
         Stage stage = (Stage) brandLabel.getScene().getWindow();
-        Navigator.navigateToMain(stage);
+        Navigator.navigateToMyVehicles(stage);
     }
     
     @FXML

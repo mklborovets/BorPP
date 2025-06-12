@@ -27,7 +27,7 @@ public class IconManager {
                 InputStream iconStream = IconManager.class.getResourceAsStream(APP_ICON_PATH);
                 if (iconStream != null) {
                     appIcon = new Image(iconStream);
-                    logger.info("Іконка додатку успішно завантажена");
+                    
                 } else {
                     logger.warning("Файл іконки додатку не знайдено: " + APP_ICON_PATH);
                 }
@@ -48,7 +48,7 @@ public class IconManager {
             if (icon != null) {
                 stage.getIcons().clear(); // Очищаємо попередні іконки
                 stage.getIcons().add(icon);
-                logger.info("Іконка встановлена для вікна: " + stage.getTitle());
+                
             }
         }
     }
