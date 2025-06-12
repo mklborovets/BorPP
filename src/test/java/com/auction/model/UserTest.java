@@ -1,11 +1,14 @@
 package com.auction.model;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class UserTest {
     
@@ -122,17 +125,17 @@ class UserTest {
     void testConstructorWithUsernameEmailPassword() {
         // Arrange
         String username = "testuser";
+        String password = "hashedpassword123";
         String email = "test@example.com";
-        String passwordHash = "hashedpassword123";
         
         // Act
-        User newUser = new User(username, email, passwordHash);
+        User newUser = new User(username, password, email);
         
         // Assert
         assertEquals(username, newUser.getUsername(), "getUsername повинен повертати значення, передане в конструктор");
+        assertEquals(password, newUser.getPassword(), "getPassword повинен повертати значення, передане в конструктор");
         assertEquals(email, newUser.getEmail(), "getEmail повинен повертати значення, передане в конструктор");
-        assertEquals(passwordHash, newUser.getPassword(), "getPassword повинен повертати значення, передане в конструктор");
-        assertEquals("USER", newUser.getRole(), "getRole повинен повертати 'USER' за замовчуванням");
+        assertEquals("user", newUser.getRole(), "getRole повинен повертати 'user' за замовчуванням");
         assertEquals(0.0, newUser.getBalance(), 0.001, "getBalance повинен повертати 0.0 за замовчуванням");
         assertNotNull(newUser.getCreatedAt(), "getCreatedAt не повинен повертати null після створення");
     }

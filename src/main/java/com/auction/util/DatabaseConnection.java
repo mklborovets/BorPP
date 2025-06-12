@@ -8,9 +8,9 @@ import java.util.logging.Logger;
 
 public class DatabaseConnection {
     private static final Logger logger = Logger.getLogger(DatabaseConnection.class.getName());
-    private static final String URL = "jdbc:postgresql://localhost:5432/auction_db";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "14256879";
+    private static final String URL = "jdbc:postgresql://ep-autumn-cake-a9lckxoy-pooler.gwc.azure.neon.tech/neondb?sslmode=require";
+    private static final String USER = "neondb_owner";
+    private static final String PASSWORD = "npg_Cd6uv7krRGQy";
     private static ThreadLocal<Connection> connectionHolder = new ThreadLocal<>();
     private static ThreadLocal<Boolean> isInTransaction = ThreadLocal.withInitial(() -> false);
     

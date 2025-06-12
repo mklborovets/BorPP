@@ -14,11 +14,11 @@ public class User {
     
     public User() {}
 
-    public User(String username, String email, String password) {
+    public User(String username, String password, String email) {
         this.username = username;
-        this.email = email;
         this.password = password;
-        this.role = "USER";
+        this.email = email;
+        this.role = "user";
         this.balance = 0.0;
         this.createdAt = LocalDateTime.now();
     }
